@@ -84,6 +84,7 @@
             letter-spacing: 0.05em;
             line-height: 1.2;
             animation: goldPulse 2.5s ease-in-out infinite alternate;
+            text-align: center;
         }
 
         @keyframes goldPulse {
@@ -318,7 +319,7 @@
         }
 
         .mission-main-card {
-            padding: 50px 40px;
+            padding: 40px 30px;
             text-align: center;
             max-width: 900px;
             margin: 120px auto 50px auto;
@@ -399,7 +400,6 @@
             flex-direction: column;
         }
 
-        /* Центральная линия */
         .funnel-wrapper::before {
             content: '';
             position: absolute;
@@ -412,7 +412,6 @@
             z-index: 0;
         }
 
-        /* Светящийся заряд, летящий сверху вниз (МЕДЛЕННО - 24с) */
         .funnel-glow-line {
             position: absolute;
             top: 0;
@@ -451,7 +450,6 @@
             padding-left: 40px;
         }
 
-        /* Точка на центральной линии */
         .funnel-dot {
             position: absolute;
             top: 50%;
@@ -471,7 +469,6 @@
             left: -10px;
         }
 
-        /* Карточка этапа */
         .funnel-box {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
             backdrop-filter: blur(15px);
@@ -558,14 +555,14 @@
 
         /* --- EXPANDABLE DETAILS BLOCK --- */
         .expandable-section {
-            max-width: 1000px; /* Сделано чуть шире для сетки плиток */
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
         .expandable-preview {
             font-size: 1.2rem;
-            color: var(--text-main); /* Сделано более читаемым */
+            color: var(--text-main);
             font-weight: 300;
             margin-bottom: 30px;
         }
@@ -648,6 +645,12 @@
             animation: glass-shine 3s infinite;
         }
 
+        /* Убираем анимацию стеклянного блика ТОЛЬКО у блока НАШИ ПРОЕКТЫ */
+        #projects .reviews-frame::after {
+            display: none !important;
+            animation: none !important;
+        }
+
         @keyframes glass-shine {
             0% { left: -150%; opacity: 0; }
             5% { opacity: 1; }
@@ -663,6 +666,28 @@
             position: relative;
             z-index: 1;
             font-size: 1.2rem;
+        }
+
+        /* --- ADAPTIVE YOUTUBE SHORTS PLAYER (9:16) --- */
+        .youtube-shorts-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px; /* Ограничиваем ширину, чтобы видео не было гигантским на компьютере */
+            aspect-ratio: 9 / 16; /* Пропорции вертикального видео 9:16 */
+            margin: 20px auto 30px auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            background: #000;
+            overflow: hidden;
+        }
+
+        .youtube-shorts-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* --- CONTACTS PROMO BLOCK --- */
@@ -735,7 +760,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(5, 5, 5, 0.9);
+            background-color: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
@@ -763,7 +788,7 @@
             position: relative;
             width: 95%;
             max-width: 700px;
-            height: 85vh;
+            height: 80vh;
             border-radius: 20px;
             overflow: hidden;
             background: #fff;
@@ -782,7 +807,7 @@
             to {transform: scale(1); opacity: 1;}
         }
 
-        .gallery-close, .form-close {
+        .gallery-close {
             position: absolute;
             top: 20px;
             right: 30px;
@@ -793,10 +818,36 @@
             z-index: 2001;
             transition: color 0.3s, transform 0.3s;
         }
-
-        .gallery-close:hover, .form-close:hover { 
+        .gallery-close:hover { 
             color: var(--accent-gold); 
             transform: scale(1.1);
+        }
+
+        /* СТИЛЬ КРЕСТИКА ДЛЯ МОБИЛЬНЫХ СВЕРХУ ФОРМЫ */
+        .form-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: #2D3436;
+            background: #ffffff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .form-close:hover {
+            background: #F2F4F8;
+            transform: scale(1.05);
+            color: var(--accent-gold);
         }
 
         .gallery-prev, .gallery-next {
@@ -825,6 +876,15 @@
 
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 900px) {
+            .golden-glow-text, .liquid-img, .hero-name span, .funnel-glow-line, .funnel-dot, .funnel-box, .funnel-number, .reviews-frame::after {
+                animation: none !important;
+            }
+            .hero-name span {
+                opacity: 1 !important;
+                filter: blur(0px) !important;
+                transform: scale(1) translateY(0) !important;
+            }
+
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-content h1 { font-size: 1.5rem; }
             .hero-name { font-size: 3rem; -webkit-text-stroke: 1px var(--accent-gold); }
@@ -832,7 +892,7 @@
             .hero-bio-title { justify-content: center; }
             .personal-session-card { flex-direction: column; gap: 20px; text-align: center; }
             .mission-points-grid { grid-template-columns: 1fr; gap: 20px; }
-            .mission-main-card { padding: 40px 20px; margin-top: 100px; }
+            .mission-main-card { padding: 30px 15px; margin-top: 100px; }
             .glass-promo-card { padding: 50px 20px; margin: 40px 20px; }
             .glass-promo-card h2 { font-size: 2.2rem; }
             .glass-promo-card p { font-size: 1.1rem; }
@@ -845,36 +905,16 @@
             }
             .nav-capsule a { font-size: 0.8rem; padding: 0 5px;}
             .header-btn { padding: 4px 12px !important; font-size: 0.8rem !important; }
-            .form-modal-content { height: 90vh; }
+            .form-modal-content { height: 85vh; width: 95%; }
             
             /* Мобильная адаптация Воронки */
-            .funnel-wrapper::before {
-                left: 30px;
-            }
-            .funnel-glow-line {
-                left: 30px;
-            }
-            .funnel-step {
-                width: 100%;
-                justify-content: flex-start;
-                padding-left: 70px;
-                padding-right: 0;
-            }
-            .funnel-step:nth-child(even) {
-                align-self: flex-start;
-                padding-left: 70px;
-            }
-            .funnel-dot {
-                left: 20px !important;
-                right: auto !important;
-            }
-            .funnel-box {
-                max-width: 100%;
-            }
-            .funnel-number, .funnel-step:nth-child(even) .funnel-number {
-                right: 10px;
-                left: auto;
-            }
+            .funnel-wrapper::before { left: 30px; }
+            .funnel-glow-line { left: 30px; }
+            .funnel-step { width: 100%; justify-content: flex-start; padding-left: 70px; padding-right: 0; }
+            .funnel-step:nth-child(even) { align-self: flex-start; padding-left: 70px; }
+            .funnel-dot { left: 20px !important; right: auto !important; }
+            .funnel-box { max-width: 100%; }
+            .funnel-number, .funnel-step:nth-child(even) .funnel-number { right: 10px; left: auto; }
         }
     </style>
 </head>
@@ -899,6 +939,7 @@
 
     <section id="about" class="container">
         <div class="mission-main-card neumorphic">
+            <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-k9TP/wgBqsYLaBSBrErQNTamejg/c19fbd8f-6ba8-4caf-b28c-cf38a3dfd85d.png?a=xspU8ieBU3DPB7p5z3MVUh" alt="MarryMe Logo" style="width: 430px; max-width: 100%; height: auto; margin: 0 auto -50px auto; display: block;">
             <h1 class="golden-glow-text">MarryMe Agency</h1>
             <p class="mission-lead">В самом главном событии в вашей жизни, мы те, кому можно доверить подготовку, организацию и проведение ваших важных событий!</p>
             <div class="mission-divider"></div>
@@ -954,7 +995,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- ОБНОВЛЕННЫЙ БЛОК: НАШИ УСЛУГИ (Сетка карточек и раскрытие) -->
     <section id="services" class="container" style="padding: 60px 0;">
         <div class="section-header">
             <h2 class="text-gold">Наши услуги</h2>
@@ -963,7 +1003,6 @@
         <div class="expandable-section">
             <div class="mission-main-card neumorphic" style="margin-top: 0; padding: 50px 40px; margin-bottom: 20px;">
                 <h3 style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 15px; text-transform: uppercase;">Организация свадьбы под ключ</h3>
-                <!-- Сделали текст темным и читаемым (color: var(--text-main)) -->
                 <p style="font-size: 1.3rem; color: var(--text-main); font-weight: 300; margin-bottom: 30px; line-height: 1.5;">
                     Полное сопровождение от идеи до завершения мероприятия. Мы берем на себя все заботы:
                 </p>
@@ -1128,6 +1167,11 @@
     <section id="projects" class="reviews-section container">
         <div class="reviews-frame neumorphic">
             <h2 class="text-gold" style="font-size: 2.5rem; margin-bottom: 20px;">Наши проекты</h2>
+            
+                        <div class="youtube-shorts-container">
+                <iframe src="https://www.youtube.com/embed/7NxlCGDptcM?autoplay=0&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
             <p class="reviews-intro">Вдохновляющие истории любви, воплощенные нашей командой</p>
             <button class="btn-main" onclick="openProjectsGallery()">Смотреть портфолио</button>
         </div>
@@ -1218,8 +1262,8 @@
     </section>
 
     <div id="formModal" class="form-modal">
-        <span class="form-close" onclick="closeFormModal()">&times;</span>
         <div class="form-modal-content">
+            <span class="form-close" onclick="closeFormModal()">&times;</span>
             <iframe src="https://elizaveta-diginau.fillout.com/t/8rBCrZywF7us" title="Создать заявку"></iframe>
         </div>
     </div>
@@ -1261,8 +1305,6 @@
             });
 
             /* --- ЛОГИКА РАСКРЫВАЮЩИХСЯ БЛОКОВ --- */
-            
-            // 1. Блок "Что входит в организацию"
             const toggleIncludedBtn = document.getElementById('toggleIncludedBtn');
             const includedContent = document.getElementById('includedContent');
             
@@ -1278,7 +1320,6 @@
                 }
             });
 
-            // 2. Блок "Наши услуги"
             const toggleServicesBtn = document.getElementById('toggleServicesBtn');
             const servicesContent = document.getElementById('servicesContent');
             
@@ -1354,8 +1395,10 @@
 
         /* --- ЛОГИКА ГАЛЕРЕИ ПРОЕКТОВ --- */
         const projectsImages = [
-            "https://images.fillout.com/orgid-393005/flowpublicid-su6MaBQqSpus/widgetid-1S1E/n8JeY24SbL9b54JhGcnhaL/1.jpg?a=qV3QDd4wq44VXBVFbUk8wk",
-            "https://images.fillout.com/orgid-393005/flowpublicid-su6MaBQqSpus/widgetid-iv6r/fA86PLbuYwC2WfWDqM9yKr/7.jpg?a=fV4dUtbc8Dc3LBwLya1Wqx"
+            "https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-mA5F/oeGUR1BvpxpzYGy1WBRLvQ/photo_2026-06-19_02-03-17.jpg?a=hRtNTNmDJptpkocUvFw1Dn",
+            "https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-sNUN/fmHBGJw2Ly3tJzhHZUaMTk/photo_2026-06-19_02-03-16-(3).jpg?a=4CgCua2dcZ817mkGqWjwXr",
+            "https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-g1CZ/t7JyVFUWx1fmm6yCNtoQkr/photo_2026-06-19_02-03-16-(2).jpg?a=6Vuj4dNJAYuxG5Y8383VsQ",
+            "https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-feAt/2jRxq9AUdhd65RH4LC7oxT/photo_2026-06-19_02-03-16.jpg?a=mX2JtzKUWeZ5ZdrsFap8QK"
         ];
         let currentProjectsIndex = 0;
         const projectsModal = document.getElementById('projectsModal');
@@ -1377,5 +1420,7 @@
         projectsModal.addEventListener('click', function(e) { if (e.target === projectsModal) closeProjectsGallery(); });
 
     </script>
+    <elevenlabs-convai agent-id="agent_0401kvg5xvgse6esyfhzcsxcsrw6"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
