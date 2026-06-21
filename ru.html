@@ -396,7 +396,7 @@
         /* --- БЛОК "ПОЧЕМУ НАМ ДОВЕРЯЮТ" (СЛАЙДЕР С АНИМАЦИЕЙ) --- */
         .trust-card {
             padding: 40px;
-            max-width: 1000px;  /* <-- ЗДЕСЬ МЕНЯЕТСЯ ОБЩАЯ ШИРИНА БЕЛОГО ОКНА */
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
@@ -404,7 +404,7 @@
         .trust-slider-container {
             position: relative;
             width: 100%;
-            max-width: 900px;   /* <-- ЗДЕСЬ МЕНЯЕТСЯ МАКСИМАЛЬНАЯ ШИРИНА СЛАЙДЕРА */
+            max-width: 900px;
             margin: 0 auto;
             padding: 15px;
             border-radius: 20px;
@@ -418,7 +418,7 @@
         .trust-slides-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9; /* <-- ЗДЕСЬ МЕНЯЮТСЯ ПРОПОРЦИИ СЛАЙДЕРА (16/9) */
+            aspect-ratio: 16 / 9;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -428,8 +428,7 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             opacity: 0;
-            /* Плавная анимация появления и легкого отдаления (эффект глубины) */
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
             transform: scale(1.05); 
             pointer-events: none;
             z-index: 1;
@@ -445,11 +444,10 @@
         .trust-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;    /* <-- ОБЕСПЕЧИВАЕТ ОБРЕЗКУ БЕЗ ИСКАЖЕНИЙ */
+            object-fit: cover;
             display: block;
         }
 
-        /* Стрелочки управления слайдером */
         .trust-arrow {
             position: absolute;
             top: 50%;
@@ -483,7 +481,6 @@
         .trust-prev { left: 25px; }
         .trust-next { right: 25px; }
 
-        /* Точки навигации (буллеты) */
         .trust-dots {
             position: absolute;
             bottom: 20px;
@@ -618,6 +615,70 @@
         
         .mission-point-card p {
             font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* --- БЛОК КОМАНДЫ (НОВЫЕ СТИЛИ С ФОТО) --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .team-card {
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Окно для фото (пропорции 3:4 как у портретов) */
+        .team-photo-wrapper {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 3 / 4;
+            margin: 0 auto 25px auto;
+            border-radius: 20px;
+            padding: 6px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), transparent);
+            box-shadow: 
+                inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+                0 10px 25px rgba(212, 175, 55, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-photo-wrapper {
+            transform: scale(1.05);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .team-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            letter-spacing: 0.05em;
+        }
+        
+        .team-card p {
+            font-size: 1.1rem;
             color: var(--text-muted);
             font-weight: 300;
         }
@@ -1171,6 +1232,7 @@
 
             .personal-session-card { flex-direction: column; gap: 20px; text-align: center; }
             .mission-points-grid { grid-template-columns: 1fr; gap: 20px; }
+            .team-grid { grid-template-columns: 1fr; gap: 20px; }
             .mission-main-card { padding: 30px 15px; margin-top: 100px; }
             .glass-inset-container { padding: 30px 20px; border-radius: 16px; }
             .mission-lead { font-size: 1.25rem; }
@@ -1282,7 +1344,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- ОБНОВЛЕННЫЙ БЛОК "ПОЧЕМУ НАМ ДОВЕРЯЮТ" (АВТО-СЛАЙДЕР 16:9) -->
     <section id="trust" class="container" style="padding: 60px 0;">
         <div class="trust-card neumorphic">
             <div class="section-header" style="margin-bottom: 30px;">
@@ -1292,29 +1353,21 @@
             <div class="trust-slider-container">
                 <div class="trust-slides-wrapper">
                     
-                    <!-- Слайд 1 (Ваша картинка) -->
-                    <!-- ЗАМЕНИТЬ КАРТИНКУ: вставьте свою ссылку в атрибут src -->
                     <div class="trust-slide active">
                         <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-7hCg/3kf6DfqLEoMaranHpZF3Zm/06ee69e4-b720-4adf-9dc8-1dfcf2f0de9a.png?a=is41tor6Em8NdStCtmUFAs" alt="Почему нам доверяют 1" class="trust-image">
                     </div>
                     
-                    <!-- Слайд 2 -->
-                    <!-- ЗАМЕНИТЬ КАРТИНКУ: вставьте свою ссылку в атрибут src -->
                     <div class="trust-slide">
                         <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-qjs6/vyXi9B2BUPxz2JkUN3hNvU/5505b6ad-a91d-4e02-838e-1f396eed2274.png?a=oygYXskUYDekxJeFG7uqVJ" alt="Почему нам доверяют 2" class="trust-image">
                     </div>
 
-                    <!-- Слайд 3 -->
-                    <!-- ЗАМЕНИТЬ КАРТИНКУ: вставьте свою ссылку в атрибут src -->
                     <div class="trust-slide">
                         <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-wJMq/f4Qv7ycZSkEBhcoGy63sYS/d84d73e4-8bcf-4e08-a612-4e6d6b53ae68.png?a=cfnBDJ5zX1yzi6bUTUkvdK" alt="Почему нам доверяют 3" class="trust-image">
                     </div>
 
-                    <!-- Стрелочки управления -->
                     <div class="trust-arrow trust-prev" onclick="changeTrustSlide(-1)">&#10094;</div>
                     <div class="trust-arrow trust-next" onclick="changeTrustSlide(1)">&#10095;</div>
 
-                    <!-- Буллеты (Точки) -->
                     <div class="trust-dots">
                         <div class="trust-dot active" onclick="setTrustSlide(0)"></div>
                         <div class="trust-dot" onclick="setTrustSlide(1)"></div>
@@ -1548,21 +1601,27 @@
             <p>Профессионалы, которые создают магию</p>
         </div>
         
-        <div class="mission-points-grid">
-            <div class="mission-point-card neumorphic">
-                <div class="mission-icon-gold">✨</div>
+        <div class="team-grid">
+            <div class="team-card neumorphic">
+                <div class="team-photo-wrapper">
+                    <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-e2ph/kUrHZbk2jg1h2Y4JMeieZU/photo_2022-11-27_21-14-30.jpg?a=xgLunkkBSWoWJYFEEGf3ZL" alt="Катя" class="team-photo">
+                </div>
                 <h3>Екатерина</h3>
                 <p>Организатор / Координатор</p>
             </div>
             
-            <div class="mission-point-card neumorphic">
-                <div class="mission-icon-gold">✨</div>
+            <div class="team-card neumorphic">
+                <div class="team-photo-wrapper">
+                    <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-e2ph/kUrHZbk2jg1h2Y4JMeieZU/photo_2022-11-27_21-14-30.jpg?a=xgLunkkBSWoWJYFEEGf3ZL" alt="Айя" class="team-photo">
+                </div>
                 <h3>Айя</h3>
                 <p>Организатор / Координатор</p>
             </div>
             
-            <div class="mission-point-card neumorphic">
-                <div class="mission-icon-gold">✨</div>
+            <div class="team-card neumorphic">
+                <div class="team-photo-wrapper">
+                    <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-e2ph/kUrHZbk2jg1h2Y4JMeieZU/photo_2022-11-27_21-14-30.jpg?a=xgLunkkBSWoWJYFEEGf3ZL" alt="Сабина" class="team-photo">
+                </div>
                 <h3>Сабина</h3>
                 <p>Организатор / Координатор</p>
             </div>
@@ -1759,22 +1818,21 @@
 
         function changeTrustSlide(n) {
             showTrustSlide(trustSlideIndex + n);
-            resetTrustInterval(); // Сброс таймера при ручном переключении
+            resetTrustInterval(); 
         }
 
         function setTrustSlide(index) {
             showTrustSlide(index);
-            resetTrustInterval(); // Сброс таймера при ручном переключении
+            resetTrustInterval(); 
         }
 
         function resetTrustInterval() {
             clearInterval(trustSlideInterval);
             trustSlideInterval = setInterval(() => {
                 showTrustSlide(trustSlideIndex + 1);
-            }, 6000); // 3000 мс = 3 секунды
+            }, 6000); // Таймер перелистывания (6 секунд)
         }
 
-        // Запуск слайдера, если он есть на странице
         if(trustSlides.length > 0) {
             resetTrustInterval();
         }
