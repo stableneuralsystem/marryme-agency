@@ -51,6 +51,15 @@
             background-color: var(--bg-color);
         }
 
+        #particles-js canvas {
+            filter: drop-shadow(0 0 5px rgba(184, 134, 11, 0.8));
+            animation: particlesGoldPulse 5s infinite alternate ease-in-out;
+        }
+        @keyframes particlesGoldPulse {
+            0% { filter: drop-shadow(0 0 3px rgba(139, 101, 8, 0.4)); opacity: 0.7; }
+            100% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); opacity: 1; }
+        }
+
         /* --- UTILITIES --- */
         .container {
             max-width: 1200px;
@@ -398,7 +407,7 @@
         .trust-slider-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 400px; /* ИЗМЕНЕНО: Ограничили ширину для вертикального блока 9:16 на ПК */
             margin: 0 auto;
             padding: 15px;
             border-radius: 20px;
@@ -412,7 +421,7 @@
         .trust-slides-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 9 / 16; /* ИЗМЕНЕНО: Пропорции 9 на 16 (вертикальные) */
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -438,7 +447,7 @@
         .trust-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Изображение будет заполнять блок 9:16, обрезая лишнее, если нужно */
             display: block;
         }
 
@@ -451,13 +460,13 @@
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.7);
             color: var(--text-main);
-            width: 50px; 
-            height: 50px;
+            width: 40px;  /* Чуть уменьшили для вертикального блока */
+            height: 40px;
             border-radius: 50%;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
@@ -472,8 +481,8 @@
             transform: translateY(-50%) scale(1.05);
         }
 
-        .trust-prev { left: 25px; }
-        .trust-next { right: 25px; }
+        .trust-prev { left: -15px; } /* Сдвинули стрелки ближе к краям или наружу */
+        .trust-next { right: -15px; }
 
         .trust-dots {
             position: absolute;
@@ -1187,10 +1196,12 @@
             .vitality-text { font-size: 1.1rem; }
             
             .trust-card { padding: 25px 15px; }
-            .trust-slider-container { padding: 8px; }
+            
+            /* Сброс max-width для мобильных, чтобы было на всю ширину контейнера */
+            .trust-slider-container { max-width: 100%; padding: 8px; }
             .trust-arrow { width: 35px; height: 35px; font-size: 1rem; }
-            .trust-prev { left: 15px; }
-            .trust-next { right: 15px; }
+            .trust-prev { left: 10px; }
+            .trust-next { right: 10px; }
             
             .glass-promo-card { padding: 50px 20px; margin: 40px 20px; }
             .glass-promo-card h2 { font-size: 2.2rem; }
@@ -1237,7 +1248,8 @@
 
     <section id="about" class="container">
         <div class="mission-main-card neumorphic">
-            <h1 class="golden-glow-text">Николай Хромов <br> Архитектор Духа</h1>
+            <!-- Обернули слова в неразрывные пробелы &nbsp; для правильного переноса на мобильном -->
+            <h1 class="golden-glow-text">Николай&nbsp;Хромов <br> Архитектор&nbsp;Духа</h1>
             
             <div class="glass-inset-container">
                 <p class="mission-lead">Приглашаю вас на глубинную трансформацию и освобождение от внутренних ограничений через научно доказанный метод работы с подсознанием.</p>
@@ -1297,15 +1309,15 @@
                 <div class="trust-slides-wrapper">
                     
                     <div class="trust-slide active">
-                        <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-7hCg/3kf6DfqLEoMaranHpZF3Zm/06ee69e4-b720-4adf-9dc8-1dfcf2f0de9a.png?a=is41tor6Em8NdStCtmUFAs" alt="Внутреннее спокойствие" class="trust-image">
+                        <img src="https://images.fillout.com/orgid-751026/flowpublicid-bSW4euZgqtus/widgetid-843y/uU4L7Ub4zg1z7qkaxeGd6R/ChatGPT-Image-1-N.-2026-.-20_23_39.png?a=riuADU6UBxFMUXmrMScs7p" alt="Внутреннее спокойствие" class="trust-image">
                     </div>
                     
                     <div class="trust-slide">
-                        <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-qjs6/vyXi9B2BUPxz2JkUN3hNvU/5505b6ad-a91d-4e02-838e-1f396eed2274.png?a=oygYXskUYDekxJeFG7uqVJ" alt="Устранение блоков" class="trust-image">
+                        <img src="https://images.fillout.com/orgid-751026/flowpublicid-bSW4euZgqtus/widgetid-4T1P/cYcHoZfgUQ7tTaHUzu2axX/0ee1e639-297a-4fc0-93a7-b96b4d64d217.png?a=f8ByfVnr8gtsvuRd1cdtWV" alt="Устранение блоков" class="trust-image">
                     </div>
 
                     <div class="trust-slide">
-                        <img src="https://images.fillout.com/orgid-594930/flowpublicid-nbSqbmoL1xus/widgetid-wJMq/f4Qv7ycZSkEBhcoGy63sYS/d84d73e4-8bcf-4e08-a612-4e6d6b53ae68.png?a=cfnBDJ5zX1yzi6bUTUkvdK" alt="Уверенность в себе" class="trust-image">
+                        <img src="https://images.fillout.com/orgid-751026/flowpublicid-bSW4euZgqtus/widgetid-31vA/kHmuFKXnnygrQkocSPeR1L/e5d2bfe9-b9cd-41b4-82e7-78f582816fd1.png?a=nbtzMfDx99zd1GDgX43SSQ" alt="Уверенность в себе" class="trust-image">
                     </div>
 
                     <div class="trust-arrow trust-prev" onclick="changeTrustSlide(-1)">&#10094;</div>
@@ -1455,27 +1467,6 @@
         
         <div class="pricing-grid">
             
-            <!-- Пакет 0 -->
-            <div class="pricing-card neumorphic">
-                <div>
-                    <h3 style="font-size: 1.6rem; color: var(--text-main);">Диагностическая консультация</h3>
-                    <p style="color: var(--text-muted); font-weight: 300; margin-top: 10px; font-size: 0.95rem;">Твоя жизнь сегодня — это результат программ, убеждений и решений, которые работают в подсознании.</p>
-                    <div class="mission-divider" style="width: 60px; margin: 15px auto;"></div>
-                </div>
-                <ul class="pricing-features">
-                    <li><span class="check-icon">✓</span> Определим истинные причины зависимости и внутренних проблем.</li>
-                    <li><span class="check-icon">✓</span> Выявим страхи, ограничивающие убеждения и психотравмы.</li>
-                    <li><span class="check-icon">✓</span> Найдём скрытые блоки и деструктивные программы подсознания.</li>
-                    <li><span class="check-icon">✓</span> Разберём, что именно удерживает тебя в текущей ситуации.</li>
-                    <li><span class="check-icon">✓</span> Составим индивидуальную карту выхода и дальнейшей трансформации.</li>
-                </ul>
-                <div style="background: rgba(212, 175, 55, 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: left; border: 1px solid rgba(212, 175, 55, 0.2);">
-                    <p style="font-weight: 500; color: var(--accent-gold); margin-bottom: 5px; font-size: 1rem;">Результат:</p>
-                    <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 300;">Ясное понимание своей ситуации, осознание корневых причин проблемы и конкретный план действий.</p>
-                </div>
-                <button class="btn-main" onclick="openFormModal()">Выбрать формат</button>
-            </div>
-
             <!-- Пакет 1 -->
             <div class="pricing-card neumorphic">
                 <div>
@@ -1691,12 +1682,12 @@
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#D4AF37" },
+                "color": { "value": "#8B6508" }, 
                 "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-                "opacity": { "value": 0.6, "random": false, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } },
-                "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
-                "line_linked": { "enable": true, "distance": 150, "color": "#D4AF37", "opacity": 0.4, "width": 1.2 },
-                "move": { "enable": true, "speed": 1.0, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false } }
+                "opacity": { "value": 0.8, "random": false, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } }, 
+                "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 1, "size_min": 1, "sync": false } }, 
+                "line_linked": { "enable": true, "distance": 150, "color": "#8B6508", "opacity": 0.5, "width": 1.5 },
+                "move": { "enable": true, "speed": 0.8, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false } } 
             },
             "interactivity": {
                 "detect_on": "canvas",
